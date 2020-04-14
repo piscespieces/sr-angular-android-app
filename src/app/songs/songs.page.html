@@ -1,9 +1,59 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Songs
+      My Songs
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-searchbar animated></ion-searchbar>
+
+  <ion-list-header class="ion-text-center">
+    <ion-segment
+      [(ngModel)]="projectsSegment"
+      (ionChange)="segmentChanged(projectsSegment)"
+      value="current"
+    >
+      <ion-segment-button value="songs">
+        <ion-icon name="musical-notes"></ion-icon>
+        <ion-badge>3</ion-badge>
+        <ion-label>My Songs</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="collaborations">
+        <ion-icon name="people"></ion-icon>
+        <ion-badge>2</ion-badge>
+        <ion-label>Collaborations</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-list-header>
+
+  <div [ngSwitch]="projectsSegment">
+    <ion-list *ngSwitchCase="'songs'" ngSelected="selected">
+      <ion-item
+        *ngFor="let song of songs"
+        detail
+        routerLink="/tabs/songs/song-details"
+        routerDirection="forward"
+      >
+        <ion-icon slot="start" color="medium" name="musical-note"></ion-icon>
+
+        <ion-label>{{song.song_title}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'collaborations'">
+      <ion-item
+        *ngFor="let song of collaborations"
+        detail
+        routerLink="/tabs/songs/song-details"
+        routerDirection="forward"
+      >
+        <ion-icon slot="start" color="medium" name="musical-note"></ion-icon>
+
+        <ion-label>{{song.song_title}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
