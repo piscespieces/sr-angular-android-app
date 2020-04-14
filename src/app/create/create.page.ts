@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { SongService } from "../services/song/song.service"
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -14,38 +15,36 @@ export class CreatePage {
 
   ctx_genres = [
     {
-      id: 1,
+      id: "1",
       name: "Rock",
     },
     {
-      id: 2,
+      id: "2",
       name: "Pop",
     },
   ];
 
   ctx_instruments = [
     {
-      id: 101,
       name: "Drum",
     },
     {
-      id: 102,
       name: "Bass",
     },
   ];
 
   ctx_moods = [
     {
-      id: 201,
+      id: "201",
       name: "Happy"
     },
     {
-      id: 202,
+      id: "202",
       name: "Relax"
     }
   ]
 
-  constructor() {}
+  constructor(private songService: SongService) {}
 
   onSubmit(
     is_original: HTMLInputElement,
@@ -67,9 +66,9 @@ export class CreatePage {
       creative_status: creative_status.value,
       song_title: song_title.value,
       artist_name: artist_name.value,
-      genres: [genres.value],
-      moods: [moods.value],
-      instruments: [instruments.value],
+      genres: genres.value,
+      moods: moods.value,
+      instruments: instruments.value.toString(),
       bpm: bpm.value,
       lyrics: lyrics.value,
       description: description.value,

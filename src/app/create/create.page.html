@@ -89,7 +89,7 @@
           placeholder="Select Instruments"
           multiple
         >
-          <ion-select-option *ngFor="let g of ctx_instruments" [value]="g.id"
+          <ion-select-option *ngFor="let g of ctx_instruments" [value]="g.name"
             >{{g.name}}</ion-select-option
           >
         </ion-select>
