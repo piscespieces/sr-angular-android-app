@@ -1,18 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.page.html',
-  styleUrls: ['./create.page.scss'],
+  selector: "app-create",
+  templateUrl: "./create.page.html",
+  styleUrls: ["./create.page.scss"],
 })
 export class CreatePage {
   user_id = "29";
 
-  constructor() { }
+  ctx_genres = [
+    {
+      id: 1,
+      name: "Rock",
+    },
+    {
+      id: 2,
+      name: "Pop",
+    },
+  ];
+
+  ctx_instruments = [
+    {
+      id: 101,
+      name: "Drum",
+    },
+    {
+      id: 102,
+      name: "Bass",
+    },
+  ];
+
+  ctx_moods = [
+    {
+      id: 201,
+      name: "Happy"
+    },
+    {
+      id: 202,
+      name: "Relax"
+    }
+  ]
+
+  constructor() {}
 
   onSubmit(
     is_original: HTMLInputElement,
@@ -20,22 +53,26 @@ export class CreatePage {
     creative_status: HTMLInputElement,
     song_title: HTMLInputElement,
     artist_name: HTMLInputElement,
-    genres: HTMLInputElement
+    genres: HTMLInputElement,
+    instruments: HTMLInputElement,
+    moods: HTMLInputElement,
+    bpm: HTMLInputElement,
+    lyrics: HTMLTextAreaElement,
+    description: HTMLTextAreaElement
   ): boolean {
-    console.log(genres)
     const data = {
+      user_id: this.user_id,
       is_original: is_original.value,
       sole_creator: sole_creator.value,
       creative_status: creative_status.value,
       song_title: song_title.value,
       artist_name: artist_name.value,
-      user_id: this.user_id,
-      genres: [genres],
-      moods: ["107"],
-      instruments: "Drums, Bass, Guitar, Synth, Voice",
-      bpm: "100",
-      lyrics: "",
-      description: "",
+      genres: [genres.value],
+      moods: [moods.value],
+      instruments: [instruments.value],
+      bpm: bpm.value,
+      lyrics: lyrics.value,
+      description: description.value,
     };
     console.log(data);
     // this.songService.createSong(data).subscribe(
@@ -44,5 +81,4 @@ export class CreatePage {
     // );
     return false;
   }
-
 }

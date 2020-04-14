@@ -7,7 +7,7 @@
 <ion-content>
   <form
     #f="ngForm"
-    (ngSubmit)="onSubmit(is_original, sole_creato, creative_status, song_title, artist_name, genres, instruments)"
+    (ngSubmit)="onSubmit(is_original, sole_creato, creative_status, song_title, artist_name, genres, instruments, moods, bpm, lyrics, description)"
   >
     <ion-list>
       <ion-item>
@@ -74,36 +74,49 @@
 
       <ion-item>
         <ion-label>Genres</ion-label>
-        <ion-select
-        name="genres"
-        #instruments
-        placeholder="Select genres"
-        multiple
-      >
-        <ion-select-option value="7"
-          >Rock</ion-select-option
-        >
-        <ion-select-option value="8"
-          >Pop</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
+        <ion-select name="genres" #genres placeholder="Select Genres" multiple>
+          <ion-select-option *ngFor="let g of ctx_genres" [value]="g.id"
+            >{{g.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
       <ion-item>
-        <ion-label>Status of song</ion-label>
+        <ion-label>Instruments</ion-label>
         <ion-select
           name="instruments"
           #instruments
           placeholder="Select Instruments"
           multiple
         >
-          <ion-select-option value="work_in_progress"
-            >Drum</ion-select-option
-          >
-          <ion-select-option value="master_recording"
-            >Bass</ion-select-option
+          <ion-select-option *ngFor="let g of ctx_instruments" [value]="g.id"
+            >{{g.name}}</ion-select-option
           >
         </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Moods</ion-label>
+        <ion-select name="moods" #moods placeholder="Select Moods" multiple>
+          <ion-select-option *ngFor="let g of ctx_moods" [value]="g.id"
+            >{{g.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>BPM</ion-label>
+        <ion-input type="text" #bpm name="bpm" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lyrics</ion-label>
+        <ion-textarea type="text" #lyrics name="lyrics" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea type="text" #description name="description" required></ion-textarea>
       </ion-item>
 
       <ion-button type="submit" color="primary" expand="block"
