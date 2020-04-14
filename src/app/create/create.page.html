@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Create Song</ion-title>
+    <ion-title>Create a Song</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
     (ngSubmit)="onSubmit(is_original, sole_creato, creative_status, song_title, artist_name, genres, instruments, moods, bpm, lyrics, description)"
   >
     <ion-list>
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>
           Is this song a new and original composition/idea?
         </ion-label>
@@ -20,7 +20,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label
           >So far are you the sole composer, writter or colaborator?</ion-label
         >
@@ -30,7 +30,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Status of song</ion-label>
         <ion-select
           name="creative_status"
@@ -49,7 +49,7 @@
       <!-- <ion-item *ngIf="!songNameCtrl.valid && songNameCtrl.touched">
         Should be a valid song name.
       </ion-item> -->
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Song Name</ion-label>
         <ion-input
           type="text"
@@ -62,7 +62,7 @@
       <!-- <ion-item *ngIf="!artistNameCtrl.valid && artistNameCtrl.touched">
         Should be a valid artist name.
       </ion-item> -->
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Artist Name</ion-label>
         <ion-input
           type="text"
@@ -72,7 +72,7 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Genres</ion-label>
         <ion-select name="genres" #genres placeholder="Select Genres" multiple>
           <ion-select-option *ngFor="let g of ctx_genres" [value]="g.id"
@@ -81,7 +81,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Instruments</ion-label>
         <ion-select
           name="instruments"
@@ -95,7 +95,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Moods</ion-label>
         <ion-select name="moods" #moods placeholder="Select Moods" multiple>
           <ion-select-option *ngFor="let g of ctx_moods" [value]="g.id"
@@ -104,22 +104,22 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>BPM</ion-label>
         <ion-input type="text" #bpm name="bpm" required></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Lyrics</ion-label>
         <ion-textarea type="text" #lyrics name="lyrics" required></ion-textarea>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-box">
         <ion-label>Description</ion-label>
         <ion-textarea type="text" #description name="description" required></ion-textarea>
       </ion-item>
 
-      <ion-button type="submit" color="primary" expand="block"
+      <ion-button type="submit" color="success" expand="block"
         >Create new song</ion-button
       >
     </ion-list>
