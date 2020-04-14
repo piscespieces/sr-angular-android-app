@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'activation/:id',
     loadChildren: () => import('./auth/activation/activation.module').then( m => m.ActivationPageModule)
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./create/create.module').then( m => m.CreatePageModule)
   }
 ];
 @NgModule({
