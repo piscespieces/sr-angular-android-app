@@ -1,0 +1,16 @@
+ion-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 80%;
+    margin: 25px auto;
+  }
+  ion-list {
+    ion-item {
+      height: 70px;
+    }
+  }
+}
