@@ -20,7 +20,7 @@ export class CreatePage {
     creative_status: HTMLInputElement,
     song_title: HTMLInputElement,
     artist_name: HTMLInputElement,
-    genres: []
+    genres: HTMLInputElement
   ): boolean {
     console.log(genres)
     const data = {
