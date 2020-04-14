@@ -1,12 +1,74 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>
-      Profile
-    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showProfilePopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    
-  
+  <ion-card class="ion-no-margin">
+    <ion-card-header color="primary" class="ion-text-center">
+      <ion-avatar><img src="{{ user.photo_url }}" /></ion-avatar>
+
+      <ion-card-title>{{user.first_name}} {{user.last_name}}</ion-card-title>
+      <ion-card-subtitle>{{user.roles}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked">First Name</ion-label>
+              <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked">Last Name</ion-label>
+              <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">
+            <ion-item>
+              <ion-label position="stacked">Phone</ion-label>
+              <ion-input type="phone" [(ngModel)]="user.phone"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">
+            <ion-item>
+              <ion-label position="stacked">Designations</ion-label>
+              <ion-input type="phone" [(ngModel)]="user.roles"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">
+            <ion-item>
+              <ion-label position="stacked">Profile Summary</ion-label>
+              <ion-textarea
+                placeholder="Enter short bio..."
+                [(ngModel)]="user.summary"
+              ></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

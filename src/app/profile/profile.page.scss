@@ -1,4 +1,35 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-card {
+  border-radius: 0;
+  padding-top: 0;
+}
+
+ion-card-header {
+  padding-top: 0;
+}
+
+ion-card-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+ion-card-subtitle {
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+ion-avatar {
+  margin: auto;
+  margin-bottom: 20px;
+  width: 120px;
+  height: 120px;
+}
+
+ion-textarea {
+  min-height: 300px;
+}
+
+ion-label {
+  color: var(--ion-color-primary);
 }
