@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { SongService } from "../services/song/song.service";
 import { AlertsService } from "../helper/alerts.service";
+import { ToastService } from "../helper/toast.service";
+import { Router } from "@angular/router";
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -59,7 +61,9 @@ export class CreatePage {
 
   constructor(
     private songService: SongService,
-    private alertService: AlertsService
+    private alertService: AlertsService,
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   onSubmit(
@@ -101,6 +105,10 @@ export class CreatePage {
       //   (res) => console.log(res),
       //   (err) => console.log(err)
       // );
+      this.toastService.successToast();
+      setTimeout(() => {
+        this.router.navigate(["/tabs/songs"]);
+      }, 2500);
     }
 
     if (Boolean(song_title.value) === false) {
