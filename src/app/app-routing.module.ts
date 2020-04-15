@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: () => import('./create/create.module').then( m => m.CreatePageModule)
-  }
+  },
+  {
+    path: 'songs',
+    loadChildren: () => import('./songs/songs.module').then( m => m.SongsPageModule)
+  },
 ];
 @NgModule({
   imports: [
