@@ -16,7 +16,6 @@
     <ion-list>
       <ion-radio-group
         name="is_original"
-        [value]="true"
         #is_original
         placeholder="Select One"
       >
@@ -44,7 +43,6 @@
 
       <ion-radio-group
         name="sole_creator"
-        [value]="true"
         #sole_creator
         placeholder="Select One"
       >
@@ -69,7 +67,7 @@
         </ion-item>
       </ion-radio-group>
 
-      <ion-item class="form-box">
+      <ion-item>
         <ion-label>Status of song</ion-label>
         <ion-select
           name="creative_status"
@@ -89,7 +87,7 @@
         Should be a valid song name.
       </ion-item> -->
       <ion-item>
-        <ion-label position="floating">Song Name</ion-label>
+        <ion-label >Song Name</ion-label>
         <ion-input
           type="text"
           name="song_title"
@@ -102,7 +100,7 @@
         Should be a valid artist name.
       </ion-item> -->
       <ion-item>
-        <ion-label position="floating">Artist Name</ion-label>
+        <ion-label >Artist Name</ion-label>
         <ion-input
           type="text"
           #artist_name
@@ -111,7 +109,7 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="ion-padding-top">
+      <ion-item>
         <ion-label>Genres</ion-label>
         <ion-select name="genres" #genres placeholder="Select Genres" multiple>
           <ion-select-option *ngFor="let g of ctx_genres" [value]="g.id"
@@ -120,7 +118,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item class="ion-padding-top">
+      <ion-item>
         <ion-label>Instruments</ion-label>
         <ion-select
           name="instruments"
@@ -134,7 +132,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item class="ion-padding-top">
+      <ion-item>
         <ion-label>Moods</ion-label>
         <ion-select name="moods" #moods placeholder="Select Moods" multiple>
           <ion-select-option *ngFor="let g of ctx_moods" [value]="g.id"
@@ -144,7 +142,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">BPM</ion-label>
+        <ion-label >BPM</ion-label>
         <ion-input type="text" #bpm name="bpm" required></ion-input>
       </ion-item>
 
@@ -165,7 +163,7 @@
 
       <ion-button
         type="submit"
-        color="success"
+        color="primary"
         expand="block"
         class="ion-margin-top"
         >Create new song</ion-button

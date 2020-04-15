@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SongService } from "../services/song/song.service";
-import { AlertController } from "@ionic/angular";
+import { AlertsService } from "../helper/alerts.service";
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -59,47 +59,8 @@ export class CreatePage {
 
   constructor(
     private songService: SongService,
-    public alertController: AlertController
+    private alertService: AlertsService
   ) {}
-
-  async originalSongAlert() {
-    const alert = await this.alertController.create({
-      header: "Cannot Create Song",
-      // subHeader: "Subtitle",
-      message:
-        "At this moment we are only accepting new and original ideas. We will be implementing the possibility to register a cover or if your song contains parts (such as samples) in the near future.",
-      buttons: ["OK"],
-    });
-
-    await alert.present();
-  }
-
-  async soleCreatorAlert(user_input) {
-    const alert = await this.alertController.create({
-      header: "Quick Alert",
-      // subHeader: "Subtitle",
-      message:
-        "Please note that if you say no you will be required to enter the collaborator(s) name and email and they will need to agree before the work is registered",
-      buttons: [
-        {
-          text: "CANCEL",
-          role: "cancel",
-          cssClass: "secondary",
-          handler: () => {
-            console.log(`The user cancelled`);
-          },
-        },
-        {
-          text: "OK",
-          handler: () => {
-            console.log(user_input);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
 
   onSubmit(
     is_original: HTMLInputElement,
@@ -129,17 +90,35 @@ export class CreatePage {
       description: description.value,
     };
 
-    if (!data.is_original) {
-      this.originalSongAlert();
-    } else if (!data.sole_creator) {
-      this.soleCreatorAlert(data);
-    } else {
-      console.log(data);
+    if (
+      Boolean(song_title.value) != false &&
+      Boolean(artist_name.value) != false &&
+      Boolean(is_original.value) != false &&
+      Boolean(sole_creator.value) != false
+    ) {
+      console.log("se envio");
+      // this.songService.createSong(data).subscribe(
+      //   (res) => console.log(res),
+      //   (err) => console.log(err)
+      // );
     }
-    // this.songService.createSong(data).subscribe(
-    //   (res) => console.log(res),
-    //   (err) => console.log(err)
-    // );
+
+    if (Boolean(song_title.value) === false) {
+      this.alertService.songNameAlert();
+    }
+
+    if (Boolean(artist_name.value) === false) {
+      this.alertService.artistAlert();
+    }
+
+    if (Boolean(data.is_original) === false) {
+      this.alertService.originalSongAlert();
+    }
+
+    if (Boolean(data.sole_creator) === false) {
+      this.alertService.soleCreatorAlert(data);
+    }
+
     return false;
   }
 }
