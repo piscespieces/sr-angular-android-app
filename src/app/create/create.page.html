@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create a Song</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSubmit(is_original, sole_creator, creative_status, song_title, artist_name, genres, instruments, moods, bpm, lyrics, description)"
+  >
+    <ion-list>
+      <ion-radio-group
+        name="is_original"
+        [value]="true"
+        #is_original
+        placeholder="Select One"
+      >
+        <ion-list-header>
+          <ion-label
+            >Is this song a new and original composition/idea?</ion-label
+          >
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>
+            YES
+          </ion-label>
+          <ion-radio slot="start" [value]="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            NO
+          </ion-label>
+          <ion-radio slot="start" [value]="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <!-- SOLE COMPOSER -->
+
+      <ion-radio-group
+        name="sole_creator"
+        [value]="true"
+        #sole_creator
+        placeholder="Select One"
+      >
+        <ion-list-header>
+          <ion-label>
+            Are you the sole composer, writter or colaborator?
+          </ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>
+            YES
+          </ion-label>
+          <ion-radio slot="start" [value]="true"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            NO
+          </ion-label>
+          <ion-radio slot="start" [value]="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-item class="form-box">
+        <ion-label>Status of song</ion-label>
+        <ion-select
+          name="creative_status"
+          #creative_status
+          placeholder="Select One"
+        >
+          <ion-select-option value="work_in_progress"
+            >Working in progress</ion-select-option
+          >
+          <ion-select-option value="master_recording"
+            >Master recording</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <!-- <ion-item *ngIf="!songNameCtrl.valid && songNameCtrl.touched">
+        Should be a valid song name.
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="floating">Song Name</ion-label>
+        <ion-input
+          type="text"
+          name="song_title"
+          required
+          #song_title
+        ></ion-input>
+      </ion-item>
+
+      <!-- <ion-item *ngIf="!artistNameCtrl.valid && artistNameCtrl.touched">
+        Should be a valid artist name.
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="floating">Artist Name</ion-label>
+        <ion-input
+          type="text"
+          #artist_name
+          name="artist_name"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-padding-top">
+        <ion-label>Genres</ion-label>
+        <ion-select name="genres" #genres placeholder="Select Genres" multiple>
+          <ion-select-option *ngFor="let g of ctx_genres" [value]="g.id"
+            >{{g.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-padding-top">
+        <ion-label>Instruments</ion-label>
+        <ion-select
+          name="instruments"
+          #instruments
+          placeholder="Select Instruments"
+          multiple
+        >
+          <ion-select-option *ngFor="let g of ctx_instruments" [value]="g.name"
+            >{{g.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-padding-top">
+        <ion-label>Moods</ion-label>
+        <ion-select name="moods" #moods placeholder="Select Moods" multiple>
+          <ion-select-option *ngFor="let g of ctx_moods" [value]="g.id"
+            >{{g.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">BPM</ion-label>
+        <ion-input type="text" #bpm name="bpm" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lyrics</ion-label>
+        <ion-textarea #lyrics name="lyrics" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea
+          type="text"
+          #description
+          name="description"
+          required
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-button
+        type="submit"
+        color="success"
+        expand="block"
+        class="ion-margin-top"
+        >Create new song</ion-button
+      >
+    </ion-list>
+  </form>
+</ion-content>
