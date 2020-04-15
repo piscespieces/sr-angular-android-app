@@ -15,4 +15,13 @@ export class ToastService {
     });
     toast.present();
   }
+
+  async successToast() {
+    const toast = await this.toastController.create({
+      message: 'Your song have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
 }
