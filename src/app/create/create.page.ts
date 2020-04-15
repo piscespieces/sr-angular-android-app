@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SongService } from "../services/song/song.service";
+import { AlertController } from "@ionic/angular";
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -56,7 +57,34 @@ export class CreatePage {
     },
   ];
 
-  constructor(private songService: SongService) {}
+  constructor(
+    private songService: SongService,
+    public alertController: AlertController
+  ) {}
+
+  async originalSongAlert() {
+    const alert = await this.alertController.create({
+      header: "Cannot Create Song",
+      // subHeader: "Subtitle",
+      message:
+        "At this moment we are only accepting new and original ideas. We will be implementing the possibility to register a cover or if your song contains parts (such as samples) in the near future.",
+      buttons: ["OK"],
+    });
+
+    await alert.present();
+  }
+
+  async soleCreatorAlert() {
+    const alert = await this.alertController.create({
+      header: "Quick Alert",
+      // subHeader: "Subtitle",
+      message:
+        "Please note that if you say no you will be required to enter the collaborator(s) name and email and they will need to agree before the work is registered",
+      buttons: ["OK", "CANCEL"],
+    });
+
+    await alert.present();
+  }
 
   onSubmit(
     is_original: HTMLInputElement,
@@ -85,7 +113,15 @@ export class CreatePage {
       lyrics: lyrics.value,
       description: description.value,
     };
-    console.log(data);
+
+    if (!data.is_original) {
+      this.originalSongAlert();
+    } else if (!data.sole_creator) {
+      this.soleCreatorAlert();
+      console.log(data);
+    } else {
+      console.log(data);
+    }
     // this.songService.createSong(data).subscribe(
     //   (res) => console.log(res),
     //   (err) => console.log(err)
