@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Create a Song</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,6 +12,7 @@
     #f="ngForm"
     (ngSubmit)="onSubmit(is_original, sole_creator, creative_status, song_title, artist_name, genres, instruments, moods, bpm, lyrics, description)"
   >
+    <!-- IS ORIGINAL? -->
     <ion-list>
       <ion-radio-group
         name="is_original"

@@ -74,13 +74,28 @@ export class CreatePage {
     await alert.present();
   }
 
-  async soleCreatorAlert() {
+  async soleCreatorAlert(user_input) {
     const alert = await this.alertController.create({
       header: "Quick Alert",
       // subHeader: "Subtitle",
       message:
         "Please note that if you say no you will be required to enter the collaborator(s) name and email and they will need to agree before the work is registered",
-      buttons: ["OK", "CANCEL"],
+      buttons: [
+        {
+          text: "CANCEL",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: () => {
+            console.log(`The user cancelled`);
+          },
+        },
+        {
+          text: "OK",
+          handler: () => {
+            console.log(user_input);
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -117,8 +132,7 @@ export class CreatePage {
     if (!data.is_original) {
       this.originalSongAlert();
     } else if (!data.sole_creator) {
-      this.soleCreatorAlert();
-      console.log(data);
+      this.soleCreatorAlert(data);
     } else {
       console.log(data);
     }
