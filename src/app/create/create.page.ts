@@ -122,10 +122,18 @@ export class CreatePage {
         this.alertService.originalSongAlert();
         break;
       case Boolean(data.sole_creator):
-        this.alertService.soleCreatorAlert(data);
+        this.alertService.soleCreatorAlert();
         break;
     }
 
     return false;
+  }
+
+  nonOriginal() {
+    this.alertService.originalSongAlert();
+  }
+
+  nonSoleCreator() {
+    this.alertService.soleCreatorAlert();
   }
 }

@@ -15,31 +15,17 @@ export class AlertsService {
         "At this moment we are only accepting new and original ideas. We will be implementing the possibility to register a cover or if your song contains parts (such as samples) in the near future.",
       buttons: ["OK"],
     });
-
     await alert.present();
   }
 
-  async soleCreatorAlert(user_input) {
+  async soleCreatorAlert() {
     const alert = await this.alertController.create({
       header: "Quick Alert",
       // subHeader: "Subtitle",
       message:
         "Please note that if you say no you will be required to enter the collaborator(s) name and email and they will need to agree before the work is registered",
-      buttons: [
-        {
-          text: "CANCEL",
-          role: "cancel",
-          cssClass: "secondary",
-          handler: () => {
-            console.log(`The user cancelled`);
-          },
-        },
-        {
-          text: "OK"
-        },
-      ],
+      buttons: ["OK"],
     });
-
     await alert.present();
   }
 

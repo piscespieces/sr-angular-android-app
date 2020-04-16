@@ -18,6 +18,7 @@
         name="is_original"
         #is_original
         placeholder="Select One"
+        required
       >
         <ion-list-header>
           <ion-label
@@ -35,7 +36,11 @@
           <ion-label>
             NO
           </ion-label>
-          <ion-radio slot="start" [value]="false"></ion-radio>
+          <ion-radio
+            slot="start"
+            [value]="false"
+            (click)="nonOriginal()"
+          ></ion-radio>
         </ion-item>
       </ion-radio-group>
 
@@ -45,6 +50,7 @@
         name="sole_creator"
         #sole_creator
         placeholder="Select One"
+        required
       >
         <ion-list-header>
           <ion-label>
@@ -63,7 +69,11 @@
           <ion-label>
             NO
           </ion-label>
-          <ion-radio slot="start" [value]="false"></ion-radio>
+          <ion-radio
+            slot="start"
+            [value]="false"
+            (click)="nonSoleCreator()"
+          ></ion-radio>
         </ion-item>
       </ion-radio-group>
 
@@ -73,6 +83,7 @@
           name="creative_status"
           #creative_status
           placeholder="Select One"
+          required
         >
           <ion-select-option value="work_in_progress"
             >Working in progress</ion-select-option
@@ -83,11 +94,8 @@
         </ion-select>
       </ion-item>
 
-      <!-- <ion-item *ngIf="!songNameCtrl.valid && songNameCtrl.touched">
-        Should be a valid song name.
-      </ion-item> -->
       <ion-item>
-        <ion-label >Song Name</ion-label>
+        <ion-label>Song Name</ion-label>
         <ion-input
           type="text"
           name="song_title"
@@ -95,12 +103,15 @@
           #song_title
         ></ion-input>
       </ion-item>
+      <!-- <ion-item *ngIf="!songNameCtrl.valid && songNameCtrl.touched">
+        Should be a valid song name.
+      </ion-item> -->
 
       <!-- <ion-item *ngIf="!artistNameCtrl.valid && artistNameCtrl.touched">
         Should be a valid artist name.
       </ion-item> -->
       <ion-item>
-        <ion-label >Artist Name</ion-label>
+        <ion-label>Artist Name</ion-label>
         <ion-input
           type="text"
           #artist_name
@@ -142,7 +153,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label >BPM</ion-label>
+        <ion-label>BPM</ion-label>
         <ion-input type="text" #bpm name="bpm" required></ion-input>
       </ion-item>
 
