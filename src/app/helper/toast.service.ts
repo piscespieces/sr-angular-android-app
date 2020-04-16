@@ -18,10 +18,9 @@ export class ToastService {
 
   async successToast() {
     const toast = await this.toastController.create({
-      message: 'Your song have been saved.',
-      duration: 2000
+      message: "Successfully created new song",
+      duration: 1500,
     });
     toast.present();
   }
-
 }
