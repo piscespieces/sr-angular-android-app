@@ -103,15 +103,18 @@
           name="song_title"
           required
           #song_title
+          ngModel
+          #songNameCtrl="ngModel"
         ></ion-input>
       </ion-item>
-      <!-- <ion-item *ngIf="!songNameCtrl.valid && songNameCtrl.touched">
-        Should be a valid song name.
-      </ion-item> -->
+      <ion-item
+        *ngIf="!songNameCtrl.valid && songNameCtrl.touched"
+        lines="none"
+        class="early-alert"
+      >
+        <ion-text color="danger"> Should be a valid song name.</ion-text>
+      </ion-item>
 
-      <!-- <ion-item *ngIf="!artistNameCtrl.valid && artistNameCtrl.touched">
-        Should be a valid artist name.
-      </ion-item> -->
       <ion-item>
         <ion-label>Artist Name <ion-text color="danger">*</ion-text></ion-label>
         <ion-input
@@ -119,7 +122,16 @@
           #artist_name
           name="artist_name"
           required
+          ngModel
+          #artistNameCtrl="ngModel"
         ></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="!artistNameCtrl.valid && artistNameCtrl.touched"
+        lines="none"
+        class="early-alert"
+      >
+        <ion-text color="danger"> Should be a valid artist name.</ion-text>
       </ion-item>
 
       <ion-item>
