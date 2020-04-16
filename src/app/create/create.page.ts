@@ -111,20 +111,19 @@ export class CreatePage {
       }, 2500);
     }
 
-    if (Boolean(song_title.value) === false) {
-      this.alertService.songNameAlert();
-    }
-
-    if (Boolean(artist_name.value) === false) {
-      this.alertService.artistAlert();
-    }
-
-    if (Boolean(data.is_original) === false) {
-      this.alertService.originalSongAlert();
-    }
-
-    if (Boolean(data.sole_creator) === false) {
-      this.alertService.soleCreatorAlert(data);
+    switch (false) {
+      case Boolean(song_title.value):
+        this.alertService.songNameAlert();
+        break;
+      case Boolean(artist_name.value):
+        this.alertService.artistAlert();
+        break;
+      case Boolean(data.is_original):
+        this.alertService.originalSongAlert();
+        break;
+      case Boolean(data.sole_creator):
+        this.alertService.soleCreatorAlert(data);
+        break;
     }
 
     return false;
