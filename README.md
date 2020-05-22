@@ -17,16 +17,16 @@ Front End Mobile App that BiscayneDevs developed for client (still under constru
 
 ### Login
 
-<img src="src/assets/img/login.png" width="150" alt="Login"/>
+<img src="src/assets/img/login.png" width="250" alt="Login"/>
 
 ### Profile
 
-<img src="src/assets/img/profile.png" width="150" alt="Profile"/>
+<img src="src/assets/img/profile.png" width="250" alt="Profile"/>
 
 ### Songs
 
-<img src="src/assets/img/songs.png" width="150" alt="Songs"/>
+<img src="src/assets/img/songs.png" width="250" alt="Songs"/>
 
 ### Songs Form (create song)
 
-<img src="src/assets/img/songs_form.png" width="150" alt="Songs Form"/>
+<img src="src/assets/img/songs_form.png" width="250" alt="Songs Form"/>
